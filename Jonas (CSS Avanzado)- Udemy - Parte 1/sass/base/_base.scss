@@ -1,0 +1,46 @@
+/*Partial file siempre parten con _*/
+/* estos archivos no se compilan */
+
+/* Normalizar o Resetear la pagina*/
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /*Hereda esta propiedad del body*/
+
+}
+html,body
+{
+    overflow-x: hidden; // fix bug - al reducir el tamaño de la screen (bajo 400px) aparece una columna a la derecha de la pantalla
+}
+
+html{
+    font-size: 62.5%; /* 100% son 16px (default) - 62.5% son 10px * Se declara un fontsize de "10px" para usarlo como referencia y establecer unidades en rem*/
+    
+
+    @include respond(tab-land){ //width < 1200?
+        font-size: 56.25%; // 1 rem = 9px -> 9/16 (px default) = 56.25%
+    }
+    @include respond(tab-port){ //width < 900?
+        font-size: 50%; // 1 rem = 8px -> 8/16 (px default) = 50%  --- Se aplica para tab-port y para phone
+    } 
+
+    @include respond(big-desktop){
+        font-size: 75%; // 1 rem = 12px -> 12/16 (px default) = 75%
+    }
+}
+
+body{
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port){ //quitar padding para dispositivos
+        padding: 0;
+    }
+
+}
+::selection{ //resaltado al seleccionar texto
+    background-color: $color-primary;
+    color: $color-white;
+}
