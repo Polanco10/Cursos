@@ -1,0 +1,89 @@
+.container{
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+    min-height: 50rem;
+
+    @media only screen and (max-width: $bp-largest) {
+        margin:0;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+.header{
+    //este es un flex container
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+    display: flex;
+    justify-content: space-between; //alinea los elementos del main axis o eje principal (en este caso el eje principal es horizontal)
+                                    // justify-content solo se usa en el flex container
+                                    //space-between separa lo maximo posible los elementos
+    align-items: center ;           // alinea los elemento de la cross axis o eje secundario (en este caso el eje secundario es el vertical)
+
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap; // si no cabe el elmento se pone en la siguiente fila
+        height: 11rem; // se agranda el header para que los elementos se situen en distintas filas
+        align-content: space-around;
+    }
+}
+.content{
+    display: flex; //este es el flex container
+    @media only screen and (max-width: $bp-medium) { // se cambia la navegacion cuando la pantalla es de 900px
+        flex-direction: column;
+    }
+}
+.sidebar{ // este es flex item
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%; // valores: flex-grow (crecimiento del elemento si hay espacio), flex-shrink (los elementos se ajustan a la pantalla, "son responsive" - default value: 1), flex-basis (ocupa un porcentaje del container "18%" - default value: auto)
+    display:flex;
+    flex-direction: column; // cambia el main axis --> de fila a columna (de arriba a abajo) 
+    justify-content: space-between; // forza a los elementos a separarse lo mas que puedan
+}
+.hotel-view{ // este es flex item
+    background-color: #fff;
+
+    //test
+    flex: 1; //flex :1 --> el elemento va a crecer tanto como pueda
+}
+
+.detail{
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line) ;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem;
+    }
+    
+    @media only screen and (max-width: $bp-small) { // al dejar la pantalla pequeña, se juntan en formato columna las descriptions con los user-reviews
+        flex-direction: column;
+    }
+}
+.description{
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    flex: 0 0 60%;
+    margin-right:4.5rem ;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-right:3rem;
+    }
+    @media only screen and (max-width: $bp-small) { 
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+.user-reviews{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
