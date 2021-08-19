@@ -1,0 +1,47 @@
+.sidebar{
+    background-color: $color-primary;
+    grid-column: sidebar-start/ sidebar-end; // La columna del sidebar va desde la linea columna "sidebar-start" hasta la linea columna sidebar-end
+    grid-row: 1/-1; // La fila del sidebar va desde la linea fila= 1 (inicio) hasta el final (-1). Se usa "-1" para que ocupe todo el espacio restante.
+    display: flex;
+    justify-content: center; //para centrar hamburguesa de nav
+
+    @media only screen and (max-width:$bp-large) {
+        grid-column:1/-1;
+        grid-row: 1/2;
+        justify-content: flex-end;
+        align-items: center;
+    }  
+}
+.nav-btn{
+    border:none;
+    border-radius: 0;
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+    margin-top: 4rem;
+
+
+    &::before,&::after{
+        background-color: #fff;
+        height: 2px;
+        width: 4.5rem;
+        content: "";
+        display: block; 
+    }
+    &::after{
+        transform: translateY(-1.5rem);
+    }
+    &::before{
+        transform: translateY(1.3rem);
+    }
+    @media only screen and (max-width:$bp-large) {
+        margin-top: 0;
+        margin-right: 3rem;
+        &::after{
+            transform: translateY(-1.2rem);
+        }
+        &::before{
+            transform: translateY(1rem);
+        }
+    }  
+}

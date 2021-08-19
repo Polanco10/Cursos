@@ -1,0 +1,38 @@
+.features{
+    grid-column: center-start/center-end;  // La columna del features va desde la linea columna "center-start" hasta la linea columna center-end
+
+    margin:15rem 0;
+    @supports(display: grid){
+        display: grid;
+        // grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(auto-fit,minmax(25rem,1fr)); //autofit= calcula el mayor numero de columnas para que quepan en el container. Que tengan un minimo de 25rem=250px y un maximo de 1fr.
+        grid-gap:6rem; //espacio entre celdas
+        align-items: start; //para que el contenido de las celdas comience desde "arriba" - Valores Stretch (default), start, end, center.
+    
+    }
+
+}
+
+.feature{
+    float: left;
+    width: 33.33333333%;
+    margin-bottom: 6rem;
+    @supports(display: grid){
+        width: auto;
+        margin-bottom: 0;
+    }
+    display: grid;
+    grid-template-columns: min-content 1fr; 
+    grid-row-gap:1.5rem; //espacio entre filas
+    grid-column-gap:2.5rem; //espacio entre columnas
+ &__icon{
+     fill:$color-primary;
+     width: 4.5rem;
+     height: 4.5rem;
+     grid-row: 1 / span 2; // comienza desde la fila = 1 y ocupa 2 filas (span 2)
+     transform: translateY(-1rem); // se mueve el icono hacia arriba
+ }
+ &__text{
+     font-size: 1.7rem;
+ }       
+}
